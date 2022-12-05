@@ -69,6 +69,7 @@
     var url = document.getElementById("url");
 
     dropdownMenu.addEventListener("change", function() {
+      top.window.onbeforeunload = null;
       iframe.src = dropdownMenu.value;
       url.innerHTML = "<a href='" + dropdownMenu.value + "'" + "target='_blank'" + "'>" + dropdownMenu.selectedOptions[0].text + "</a>";
       top.window.onbeforeunload = null;
