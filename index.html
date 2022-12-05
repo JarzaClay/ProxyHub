@@ -58,6 +58,7 @@
     var dropdownMenu = document.getElementById("dropdownMenu");
     var url = document.getElementById("url");
     url.innerHTML = "<a href='" + dropdownMenu.value + "'" + "target='_blank'" + "'>" + dropdownMenu.selectedOptions[0].text + "</a>";
+    top.window.onbeforeunload = null;
   </script>
 
   <iframe id="iframe" src="https://bit.ly/ludi-unbloqr"></iframe>
@@ -70,6 +71,7 @@
     dropdownMenu.addEventListener("change", function() {
       iframe.src = dropdownMenu.value;
       url.innerHTML = "<a href='" + dropdownMenu.value + "'" + "target='_blank'" + "'>" + dropdownMenu.selectedOptions[0].text + "</a>";
+      top.window.onbeforeunload = null;
     });
   </script>
 </body>
