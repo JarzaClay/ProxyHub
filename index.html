@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="icon" type="image/png" ref="./favicon.ico">
+  <link rel="icon" type="image/png" href="./favicon.ico">
   <title>Proxy Hub</title>
   <style>
     /* Add some basic styling to the page */
@@ -51,12 +51,12 @@
     <option value="https://bit.ly/ludi-unbloqr-status">Ludicrous Status</option>
   </select>
 
-  <h2 id="url">URL: </h2>
+  <h2 id="url"></h2>
 
   <script>
+    /* All code by JarzaClay for the use of anyone and everyone who wants to use it. I do not take responsibility with things done with this code. */
     var dropdownMenu = document.getElementById("dropdownMenu");
     var url = document.getElementById("url");
-    var text = "URL: ";
     url.innerHTML = "<a href='" + dropdownMenu.value + "'" + "target='_blank'" + "'>" + dropdownMenu.selectedOptions[0].text + "</a>";
   </script>
 
@@ -66,7 +66,6 @@
     var dropdownMenu = document.getElementById("dropdownMenu");
     var iframe = document.getElementById("iframe");
     var url = document.getElementById("url");
-    var text = "URL: ";
 
     dropdownMenu.addEventListener("change", function() {
       iframe.src = dropdownMenu.value;
