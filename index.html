@@ -1,1 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Proxy Hub</title>
+  <style>
+    /* Add some basic styling to the page */
+    body {
+      font-family: sans-serif;
+      padding: 0px;
+    }
+  
+    /* Style the dropdown menu */
+    select {
+      font-size: 16px;
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      position: absolute;
+      top: 1%;
+      left: 0.2%;
+    }
+  
+    /* Style the iframe */
+    iframe {
+      width: 99.5%;
+      height: 94.5%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      position: absolute;
+      top: 5%;
+      left: 0.2%;
+    }
+  
+    /* Style the URL display */
+    h2 {
+        position: absolute;
+      left: 10%;
+      top: -0.5%;
+    }
+  </style>
+  
+</head>
+<body>
+  <select id="dropdownMenu">
+    <option value="https://bit.ly/ludi-unbloqr">Ludicrous 1</option>
+    <option value="https://bit.ly/ludi-unbloqr-2">Ludicrous 2</option>
+    <option value="https://bit.ly/ludi-unbloqr-3">Ludicrous 3</option>
+    <option value="https://bit.ly/ludi-unbloqr-4">Ludicrous 4</option>
+    <option value="https://bit.ly/ludi-unbloqr-5">Ludicrous 5</option>
+    <option value="https://bit.ly/ludi-unbloqr-status">Ludicrous Status</option>
+  </select>
 
+  <h2 id="url">URL: </h2>
+
+  <script>
+    var dropdownMenu = document.getElementById("dropdownMenu");
+    var url = document.getElementById("url");
+    var text = "URL: ";
+    url.innerHTML = "<a href='" + dropdownMenu.value + "'" + "target='_blank'" + "'>" + dropdownMenu.selectedOptions[0].text + "</a>";
+  </script>
+
+  <iframe id="iframe" src="https://bit.ly/ludi-unbloqr"></iframe>
+
+  <script>
+    var dropdownMenu = document.getElementById("dropdownMenu");
+    var iframe = document.getElementById("iframe");
+    var url = document.getElementById("url");
+    var text = "URL: ";
+
+    dropdownMenu.addEventListener("change", function() {
+      iframe.src = dropdownMenu.value;
+      url.innerHTML = "<a href='" + dropdownMenu.value + "'" + "target='_blank'" + "'>" + dropdownMenu.selectedOptions[0].text + "</a>";
+    });
+  </script>
+</body>
+</html>
