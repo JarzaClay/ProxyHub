@@ -35,6 +35,18 @@
       right: 0.2%;
     }
 
+    #cloak {
+      width: 10.4%;
+      height: 3.8%;
+      font-size: 100%;
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      position: absolute;
+      top: 1%;
+      right: 10.6%;
+    }
+
     /* Style the iframe */
     iframe {
       width: 99.5%;
@@ -70,6 +82,15 @@
   <select id="typeSwitcher">
     <option value="ludi-unbloqr" data-other-value="">Main Ludicrous</option>
     <option value="ludi-unbloqr-sub" data-other-value="-2">Ludicrous Subs</option>
+  </select>
+
+  <select id="cloak">
+    <option value="newtab.png">New Tab</option>
+    <option value="googleclassroom.png">Google Classroom</option>
+    <option value="canvas.png">Canvas</option>
+    <option value="rapididentity.png">RapidIdentity</option>
+    <option value="googledrive.png">Google Drive</option>
+    <option value="googledocs.png">Google Docs</option>
   </select>
 
   <h2 id="url"></h2>
@@ -123,6 +144,31 @@
     iframe.src = dropdownMenu.value;
     url.innerHTML = "<a href='" + dropdownMenu.value + "'" + "target='_blank'" + "'>" + dropdownMenu.selectedOptions[0].text + "</a>";
     top.window.onbeforeunload = null;
+  });
+  </script>
+
+  <script>
+    var cloak = document.getElementById('cloak')
+
+    cloak.addEventListener('change', function() {
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.href = `./images/${cloak.value}`;
+      console.log(cloak.value);
+      document.head.appendChild(link);
+      if (cloak.value === 'newtab.png') {
+        document.title = 'New Tab';
+      } else if (cloak.value === 'googleclassroom.png') {
+        document.title = 'Classes';
+      } else if (cloak.value === 'canvas.png') {
+        document.title = 'Dashboard'
+      } else if (cloak.value === 'rapididentity.png') {
+        document.title = 'Applications | RapidIdentity'
+      } else if (cloak.value === 'googledrive.png') {
+        document.title = 'My Drive - Google Drive'
+      } else if (cloak.value === 'googledocs.png') {
+        document.title = 'Google Docs'
+      }
   });
   </script>
 </body>
