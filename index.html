@@ -10,9 +10,11 @@
       padding: 0px;
     }
   
-    /* Style the dropdown menu */
-    select {
-      font-size: 16px;
+    /* Style the dropdown menus */
+    #dropdownMenu {
+      width: 9.4%;
+      height: 3.8%;
+      font-size: 100%;
       padding: 8px 16px;
       border: 1px solid #ccc;
       border-radius: 4px;
@@ -21,6 +23,18 @@
       left: 0.2%;
     }
   
+    #typeSwitcher {
+      width: 9.4%;
+      height: 3.8%;
+      font-size: 100%;
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      position: absolute;
+      top: 1%;
+      right: 0.2%;
+    }
+
     /* Style the iframe */
     iframe {
       width: 99.5%;
@@ -34,6 +48,8 @@
   
     /* Style the URL display */
     h2 {
+      width: 20%;
+      height: 3.2%;
       position: absolute;
       left: 10%;
       top: -0.5%;
@@ -51,12 +67,20 @@
     <option value="https://bit.ly/ludi-status">Ludicrous Status</option>
   </select>
 
+  <select id="typeSwitcher">
+    <option value="ludi-unbloqr" data-other-value="">Main Ludicrous</option>
+    <option value="ludi-unbloqr-sub" data-other-value="-2">Ludicrous Subs</option>
+  </select>
+
   <h2 id="url"></h2>
 
   <script>
     /* All code by JarzaClay for the use of anyone and everyone who wants to use it. I do not take responsibility with things done with this code. */
     var dropdownMenu = document.getElementById("dropdownMenu");
+    var typeSwitcher = document.getElementById("typeSwitcher");
     var url = document.getElementById("url");
+    var iframe = document.getElementById("iframe");
+    var options = typeSwitcher.querySelectorAll('option');
     url.innerHTML = "<a href='" + dropdownMenu.value + "'" + "target='_blank'" + "'>" + dropdownMenu.selectedOptions[0].text + "</a>";
     top.window.onbeforeunload = null;
   </script>
@@ -64,9 +88,12 @@
   <iframe id="iframe" src="https://bit.ly/ludi-unbloqr"></iframe>
 
   <script>
+    var options = dropdownMenu.querySelectorAll('option');
     var dropdownMenu = document.getElementById("dropdownMenu");
+    var typeSwitcher = document.getElementById("typeSwitcher");
     var iframe = document.getElementById("iframe");
     var url = document.getElementById("url");
+    var stuff = ["", "-2", "-3", "-4", "-5"];
 
     dropdownMenu.addEventListener("change", function() {
       top.window.onbeforeunload = null;
@@ -74,6 +101,29 @@
       url.innerHTML = "<a href='" + dropdownMenu.value + "'" + "target='_blank'" + "'>" + dropdownMenu.selectedOptions[0].text + "</a>";
       top.window.onbeforeunload = null;
     });
+  </script>
+
+  <script>
+    var options = dropdownMenu.querySelectorAll('option');
+    var dropdownMenu = document.getElementById("dropdownMenu");
+    var typeSwitcher = document.getElementById("typeSwitcher");
+    var iframe = document.getElementById("iframe");
+    var url = document.getElementById("url");
+    var stuff = ["", "-2", "-3", "-4", "-5"];
+
+    typeSwitcher.addEventListener("change", function() {
+    top.window.onbeforeunload = null;
+    type = typeSwitcher.value;
+    options.forEach((option, index) => {
+      option.value = `https://bit.ly/${type}${stuff[index]}`;
+    });
+    options.item(5).value = `https://bit.ly/ludi-status${stuff[typeSwitcher.selectedIndex]}`;
+    console.log(stuff[typeSwitcher.selectedIndex]);
+    top.window.onbeforeunload = null;
+    iframe.src = dropdownMenu.value;
+    url.innerHTML = "<a href='" + dropdownMenu.value + "'" + "target='_blank'" + "'>" + dropdownMenu.selectedOptions[0].text + "</a>";
+    top.window.onbeforeunload = null;
+  });
   </script>
 </body>
 </html>
